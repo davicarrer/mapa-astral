@@ -64,7 +64,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return "\n " + nome + ": \n"
                 + " - Tem " + idade + " anos"
                 + "\n - Nasceu no dia e horário: " + dataNascimento.format(formatter) + " e " + dataNascimento.getYear() + Bissexto.ehBissexto(dataNascimento.getYear())

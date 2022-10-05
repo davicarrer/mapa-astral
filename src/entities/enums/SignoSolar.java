@@ -110,8 +110,6 @@ public enum SignoSolar {
     }
 
     static boolean isWithinRange(MonthDay monthDayNascimento, MonthDay inicio, MonthDay fim){
-        boolean testeantes = monthDayNascimento.isBefore(inicio);
-        boolean testefim = (monthDayNascimento.isAfter(fim));
         return !((monthDayNascimento.isBefore(inicio) || (monthDayNascimento.isAfter(fim))));
     }
 

@@ -54,7 +54,8 @@ public class Main {
                     + p.getDataNascimento().format(formatter) + " e é do signo solar "
                     + p.getSignoSolar().toString().toLowerCase() + ", signo ascendente em "
                     + p.getSignoAscendente().toString().toLowerCase()  + ", signo lunar em "
-                    + p. getSignoLunar().toString().toLowerCase());
+                    + p. getSignoLunar().toString().toLowerCase() + ", e é da "
+                    + p.getGeracao().toString().toLowerCase());
         }
     }
 }

@@ -1,5 +1,6 @@
 package entities;
 
+import entities.enums.Geracao;
 import entities.enums.SignoAscendente;
 import entities.enums.SignoLunar;
 import entities.enums.SignoSolar;
@@ -17,6 +18,7 @@ public class Pessoa {
     private SignoSolar signoSolar;
     private SignoAscendente signoAscendente;
     private SignoLunar signoLunar;
+    private Geracao geracao;
 
     public Pessoa(String nome, LocalDateTime dataNascimento, ZoneId localNascimento) {
         this.nome = nome;
@@ -26,6 +28,7 @@ public class Pessoa {
         signoSolar = SignoSolar.qualSignoSolar(LocalDate.of(dataNascimento.getYear(),dataNascimento.getMonth(),dataNascimento.getDayOfMonth()));
         signoAscendente = SignoAscendente.qualSignoAscendente(dataNascimento);
         signoLunar = SignoLunar.qualSignoLunar(localNascimento);
+        geracao = Geracao.qualAGeracao(dataNascimento.getYear());
     }
 
     public String getNome() {
@@ -56,5 +59,8 @@ public class Pessoa {
     }
     public SignoLunar getSignoLunar(){
         return signoLunar;
+    }
+    public Geracao getGeracao(){
+        return geracao;
     }
 }

@@ -1,5 +1,6 @@
 package application;
 
+import entities.Bissexto;
 import entities.Pessoa;
 
 import java.time.*;
@@ -14,13 +15,13 @@ public class Main {
         //Datas de nascimento aleatorias para uma pessoa de cada signo
         LocalDateTime dataNascimentoAries = LocalDateTime.of(1990, Month.MARCH,21, 11,0);
         LocalDateTime dataNascimentoTouro = LocalDateTime.of(1970, Month.MAY,1, 4,30);
-        LocalDateTime dataNascimentoGemeos = LocalDateTime.of(1989, Month.JUNE,3, 5,12);
+        LocalDateTime dataNascimentoGemeos = LocalDateTime.of(1989, Month.JUNE,3, 12,12);
         LocalDateTime dataNascimentoCancer = LocalDateTime.of(1991, Month.JULY,10, 8,30);
         LocalDateTime dataNascimentoLeao = LocalDateTime.of(1994, Month.AUGUST,2, 6,30);
         LocalDateTime dataNascimentoVirgem = LocalDateTime.of(1988, Month.SEPTEMBER,18, 10,20);
         LocalDateTime dataNascimentoLibra = LocalDateTime.of(1979, Month.OCTOBER,14, 22,30);
         LocalDateTime dataNascimentoEscorpiao = LocalDateTime.of(1999, Month.NOVEMBER,12, 8,30);
-        LocalDateTime dataNascimentoSagitario = LocalDateTime.of(2000, Month.DECEMBER,2, 17,02);
+        LocalDateTime dataNascimentoSagitario = LocalDateTime.of(2000, Month.DECEMBER,2, 11,02);
         LocalDateTime dataNascimentoCapricornio = LocalDateTime.of(2001, Month.JANUARY,1, 3,30);
         LocalDateTime dataNascimentoAquario = LocalDateTime.of(1994, Month.FEBRUARY,9, 8,30);
         LocalDateTime dataNascimentoPeixes = LocalDateTime.of(2000, Month.MARCH,20, 5,0);
@@ -36,13 +37,13 @@ public class Main {
 
         pessoas.add(new Pessoa("Cleber", dataNascimentoAries,ZoneId.of("America/Sao_Paulo")));
         pessoas.add(new Pessoa("Lucas", dataNascimentoTouro,ZoneId.of("Indian/Kerguelen")));
-        pessoas.add(new Pessoa("Amanda", dataNascimentoGemeos,ZoneId.of("Israel")));
+        pessoas.add(new Pessoa("Amanda", dataNascimentoGemeos,ZoneId.of("America/Recife")));
         pessoas.add(new Pessoa("Claudia", dataNascimentoCancer,ZoneId.of("Japan")));
         pessoas.add(new Pessoa("Fernando", dataNascimentoLeao,ZoneId.of("Libya")));
         pessoas.add(new Pessoa("Iara", dataNascimentoVirgem,ZoneId.of("Pacific/Apia")));
         pessoas.add(new Pessoa("Jessica", dataNascimentoLibra,ZoneId.of("Portugal")));
         pessoas.add(new Pessoa("Yuri", dataNascimentoEscorpiao,ZoneId.of("America/Sao_Paulo")));
-        pessoas.add(new Pessoa("Daiane", dataNascimentoSagitario,ZoneId.of("Singapore")));
+        pessoas.add(new Pessoa("Daiane", dataNascimentoSagitario,ZoneId.of("America/Cuiaba")));
         pessoas.add(new Pessoa("Caique", dataNascimentoCapricornio,ZoneId.of("Turkey")));
         pessoas.add(new Pessoa("Cristiana", dataNascimentoAquario,ZoneId.of("US/Michigan")));
         pessoas.add(new Pessoa("Karla", dataNascimentoPeixes,ZoneId.of("America/Sao_Paulo")));
@@ -52,12 +53,15 @@ public class Main {
         for (Pessoa p: pessoas) {
             System.out.println(p.getNome()+ " tem "
                     + p.getIdade() + " nasceu em "
-                    + p.getDataNascimento().format(formatter) + " com ZoneOffset: "
-                    + ZonedDateTime.of(p.getDataNascimento(),p.getLocalNascimento()).getOffset() + " e é do signo solar "
+                    + p.getDataNascimento().format(formatter)
+                    + Bissexto.ehBissexto(p.getDataNascimento().getYear())
+                    + ", com ZoneOffset: "
+                    + ZonedDateTime.of(p.getDataNascimento(),p.getLocalNascimento()).getOffset() + " \n    - é do signo solar "
                     + p.getSignoSolar().toString().toLowerCase() + ", signo ascendente em "
                     + p.getSignoAscendente().toString().toLowerCase()  + ", signo lunar em "
-                    + p. getSignoLunar().toString().toLowerCase() + ", e é da "
+                    + p. getSignoLunar().toString().toLowerCase() + ", e é da geração"
                     + p.getGeracao().toString().toLowerCase());
         }
+
     }
 }

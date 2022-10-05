@@ -27,7 +27,7 @@ public class Pessoa {
         this.localNascimento = localNascimento;
         signoSolar = SignoSolar.qualSignoSolar(LocalDate.of(dataNascimento.getYear(),dataNascimento.getMonth(),dataNascimento.getDayOfMonth()));
         signoAscendente = SignoAscendente.qualSignoAscendente(dataNascimento);
-        signoLunar = SignoLunar.qualSignoLunar(localNascimento);
+        signoLunar = SignoLunar.qualSignoLunar(localNascimento, dataNascimento);
         geracao = Geracao.qualAGeracao(dataNascimento.getYear());
     }
 

@@ -8,24 +8,25 @@ package entities.enums;
 //                  - para ZoneId com letras entre J-N: signo lunar: HOMEM_DE_FERRO
 //                  - para ZoneId com letras entre O-Z: signo lunar VIUVA_NEGRA
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.TreeSet;
 
 public enum SignoLunar {
-    THOR,
-    HOMEM_ARANHA,
-    HOMEM_DE_FERRO,
-    VIUVA_NEGRA;
+    CASIMIRO,
+    ODIN,
+    GANDALF,
+    DINOSSAURO;
 
-    public static SignoLunar qualSignoLunar(ZoneId z) {
-        if (z.toString().startsWith("A") || z.toString().startsWith("B") || z.toString().startsWith("C")) {
-            return THOR;
-        } else if (z.toString().startsWith("E") || z.toString().startsWith("G") || z.toString().startsWith("H") || z.toString().startsWith("I")) {
-            return HOMEM_ARANHA;
-        } else if (z.toString().startsWith("J") || z.toString().startsWith("K") || z.toString().startsWith("L") || z.toString().startsWith("M") || z.toString().startsWith("N")) {
-            return HOMEM_DE_FERRO;
+    public static SignoLunar qualSignoLunar(ZoneId z,LocalDateTime dataNascimento) {
+        if (z.toString().equals("America/Recife") &&  (dataNascimento.getHour() >= 12)) {
+            return CASIMIRO;
+        } else if (z.toString().equals("America/Cuiaba") && (dataNascimento.getHour() < 12)) {
+            return ODIN;
+        } else if (z.toString().equals("America/Sao_Paulo")) {
+            return GANDALF;
         } else
-            return VIUVA_NEGRA;
+            return DINOSSAURO;
 
     }
 }

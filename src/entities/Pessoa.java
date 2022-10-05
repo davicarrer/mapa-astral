@@ -5,10 +5,8 @@ import entities.enums.SignoAscendente;
 import entities.enums.SignoLunar;
 import entities.enums.SignoSolar;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.ZoneId;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Pessoa {
     private String nome;
@@ -62,5 +60,19 @@ public class Pessoa {
     }
     public Geracao getGeracao(){
         return geracao;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return "\n " + nome + ": \n"
+                + " - Tem " + idade + " anos"
+                + "\n - Nasceu no dia e horário: " + dataNascimento.format(formatter) + " e " + dataNascimento.getYear() + Bissexto.ehBissexto(dataNascimento.getYear())
+                + "\n   - Seu local de nascimento tem offset de " + ZonedDateTime.of(getDataNascimento(),getLocalNascimento()).getOffset() + " em relação ao UTC"
+                + "\n - Seus signos são:"
+                + "\n   - Solar (essência da pessoa): " + getSignoSolar().toString().toLowerCase()
+                + "\n   - Ascendente (como o mundo a vê): " + getSignoAscendente().toString().toLowerCase()
+                + "\n   - Lunar (como se relaciona com o mundo): " + getSignoLunar().toString().toLowerCase()
+                + "\n - É da geração: " +getGeracao().toString().toLowerCase();
     }
 }

@@ -48,19 +48,9 @@ public class Main {
         pessoas.add(new Pessoa("Cristiana", dataNascimentoAquario,ZoneId.of("US/Michigan")));
         pessoas.add(new Pessoa("Karla", dataNascimentoPeixes,ZoneId.of("America/Sao_Paulo")));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         for (Pessoa p: pessoas) {
-            System.out.println(p.getNome()+ " tem "
-                    + p.getIdade() + " nasceu em "
-                    + p.getDataNascimento().format(formatter)
-                    + Bissexto.ehBissexto(p.getDataNascimento().getYear())
-                    + ", com ZoneOffset: "
-                    + ZonedDateTime.of(p.getDataNascimento(),p.getLocalNascimento()).getOffset() + " \n    - é do signo solar "
-                    + p.getSignoSolar().toString().toLowerCase() + ", signo ascendente em "
-                    + p.getSignoAscendente().toString().toLowerCase()  + ", signo lunar em "
-                    + p. getSignoLunar().toString().toLowerCase() + ", e é da geração"
-                    + p.getGeracao().toString().toLowerCase());
+            System.out.println(p);
         }
 
     }

@@ -50,8 +50,10 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         for (Pessoa p: pessoas) {
-            System.out.println(p.getNome()+ " nasceu em "
-                    + p.getDataNascimento().format(formatter) + " e é do signo solar "
+            System.out.println(p.getNome()+ " tem "
+                    + p.getIdade() + " nasceu em "
+                    + p.getDataNascimento().format(formatter) + " com ZoneOffset: "
+                    + ZonedDateTime.of(p.getDataNascimento(),p.getLocalNascimento()).getOffset() + " e é do signo solar "
                     + p.getSignoSolar().toString().toLowerCase() + ", signo ascendente em "
                     + p.getSignoAscendente().toString().toLowerCase()  + ", signo lunar em "
                     + p. getSignoLunar().toString().toLowerCase() + ", e é da "
